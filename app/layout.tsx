@@ -14,16 +14,18 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
 export const metadata: Metadata = {
   title: "Alpha Ros - Plataforma Inmobiliaria",
   description: "Plataforma de compra, alquiler y anticrético de inmuebles",
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const bolPruebaSesion = false;
+  // Eliminamos la variable bolPruebaSesion ya que causaba conflicto de tipos
 
   return (
     <html
@@ -32,7 +34,8 @@ export default function RootLayout({
     >
       <body className="min-h-full flex flex-col font-sans">
         <AuthProvider>
-          <Header bolIsLoggedIn={bolPruebaSesion} />
+          {/* ✅ CORRECCIÓN: Llamamos al Header sin la prop */}
+          <Header />
 
           <main className="flex-1 pt-16 flex flex-col">{children}</main>
         </AuthProvider>
@@ -41,7 +44,7 @@ export default function RootLayout({
     </html>
   );
 }
-/*  Dev: Rodrigo Almaraz - team-ada
+/* Dev: Rodrigo Almaraz - team-ada
     Fecha: 30/03/2026
-    Funcionalidad: FIX movi el AuthProider 3 lineas mas para abajo
+    Funcionalidad: FIX movi el AuthProvider 3 lineas mas para abajo y limpié props de prueba
 */

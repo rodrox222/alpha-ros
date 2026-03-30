@@ -1,15 +1,15 @@
+"use client";
+/**
+ * dev: Kevin isnado
+ * descripcion: Vista intermedia del historial de pagos dentro del perfil
+ */
 import HistorialPagosPage from "@/app/frontend/cobros/historial-pagos/page";
 
-export default function HistorialPagosView({ id_usuario }: { id_usuario: string }) {
+export default function HistorialPagosView() {
   return (
-    <div className="p-4 md:p-6">
-      {/* titulo*/}
-      <h2 className="text-xl md:text-2xl font-bold mb-4">
-        Historial de Pagos
-      </h2>
-
-      {/* contenido */}
-      <HistorialPagosPage id_usuario={id_usuario} />
+    <div className="w-full">
+      {/* ✅ CORRECCIÓN: Quitamos la prop id_usuario ya que el componente la lee de la URL */}
+      <HistorialPagosPage />
     </div>
   );
 }

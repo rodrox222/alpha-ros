@@ -1,16 +1,28 @@
 "use client";
-/**
- * dev: Kevin isnado
- * ultima modif: 25/03/2025 - horas: 6 pm
- * descripcion: pagina historial de pagos
- */
 
+import { Suspense } from "react"; // ✅ Añadido Suspense
+import { useSearchParams } from "next/navigation";
 import TabsPagos from "./tabs-pagos";
 
-export default function HistorialPagosPage({ id_usuario }: { id_usuario: string }) {
+// 1. Cambiamos el nombre y quitamos el export default
+function HistorialPagosContent() {
+  const searchParams = useSearchParams();
+  const id_usuario = searchParams.get("id") || "";
+
+  return <TabsPagos id_usuario={id_usuario} />;
+}
+
+// ✅ 2. Exportamos el nuevo componente con Suspense
+export default function HistorialPagosPage() {
   return (
     <div className="w-full p-4 md:p-6 font-sans">
-      <TabsPagos id_usuario={id_usuario} />
+      <Suspense
+        fallback={
+          <p className="text-sm text-gray-500">Cargando historial...</p>
+        }
+      >
+        <HistorialPagosContent />
+      </Suspense>
     </div>
   );
 }

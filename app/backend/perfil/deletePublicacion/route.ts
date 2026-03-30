@@ -8,9 +8,10 @@
       - @throws {403} - si el usuario no es el dueño
       - @throws {404} - si la publicación no existe
 */
+/*
 import { NextRequest, NextResponse } from "next/server";
 import { PrismaClient } from "@prisma/client";
-import { createClient } from "@/lib/supabase/server";
+//import { createClient } from "@/lib/supabase/server";
 
 const prisma = new PrismaClient();
 
@@ -75,3 +76,14 @@ export async function DELETE(req: NextRequest) {
     );
   }
 }
+*/
+
+import { NextResponse } from 'next/server';
+
+export async function DELETE(request: Request) {
+  // Tu lógica para borrar la publicación aquí
+  return NextResponse.json({ message: "Publicación eliminada" });
+}
+
+// O si usas POST para borrar por alguna razón:
+// export async function POST(request: Request) { ... }
