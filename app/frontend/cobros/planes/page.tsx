@@ -69,12 +69,7 @@ export default async function PlanesPublicacion({ searchParams }: Props) {
                   + {plan.cant_publicaciones} cupos de publicación
                 </p>
               </CardContent>
-              <CardFooter className="pt-8 bg-transparent">
-                <BotonContinuarPlan
-                  planId={plan.id_plan}
-                  idUsuario={idUsuario}
-                />
-              </CardFooter>
+              <CardFooter className="pt-8 bg-transparent"></CardFooter>
             </Card>
           ))}
         </div>
