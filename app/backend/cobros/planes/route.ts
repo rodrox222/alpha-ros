@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
+import { prisma } from '@/lib/prisma'; // Ajusta la ruta a donde tengas tu instancia de prisma
 
-const prisma = new PrismaClient();
-
-// Fíjate que es "export async function GET", NO "export default async function"
 export async function GET() {
   try {
     const planes = await prisma.planPublicacion.findMany({
